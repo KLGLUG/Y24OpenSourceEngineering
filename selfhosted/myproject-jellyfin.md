@@ -58,3 +58,8 @@ User accounts, Playlists, మరియు Media libraries మేనేజ్ చ
 పూర్తిగా offline లేదా local network లో పని చేస్తుంది
 
 No ads, No subscriptions, మరియు No tracking
+
+
+Google Drive Link[https://drive.google.com/file/d/1TbymEnMB11YUhr2X1ns7s7cvJbAyP6UY/view?usp=sharing]
+
+LinkedIn Article[https://www.linkedin.com/pulse/exploring-jellyfin-our-self-hosted-media-server-project-vasudev-pvnic]
