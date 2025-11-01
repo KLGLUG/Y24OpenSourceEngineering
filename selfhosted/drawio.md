@@ -26,8 +26,7 @@ Docker ఇన్‌స్టాల్ అయిన తర్వాత, Draw.io �
 ఇది ఓపెన్ సోర్స్ కాబట్టి మీరు దీన్ని మీ అవసరాలకు అనుగుణంగా మార్చుకోవచ్చు.
 
 
-Google Drive Link: https://drive.google.com/file/d/1NFjTwEPOs5rSptPtE0-yoABOKZaBeJWr/view?usp=sharing
-
+Google Drive Link:https://drive.google.com/file/d/1CbTaFF08SMWM3jbtW7zBfK5n0QBDG4GX/view?usp=sharing
 LinkedIn Post Link: https://www.linkedin.com/posts/viswa-nikhitha-702bb2390_drawio-diagramsnet-ubuntu-activity-7390417879915081728-Ng_I?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAGBJEHIBKdJzYumIKTVJWx4oSQ_RWnj_ztY
 
 Team Names:
