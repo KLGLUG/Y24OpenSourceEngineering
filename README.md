@@ -84,4 +84,3 @@ http://localhost:
 linkedin post:https://www.linkedin.com/pulse/kitchen-owl-self-hosted-server-spandana-kona-roroe
 
 Server Hosting video:https://drive.google.com/file/d/1FWh6XvEezxVTzPyCurBaG09IGv5Bcr3r/view?usp=sharing
-
