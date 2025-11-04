@@ -1,4 +1,3 @@
-<!-- KitchenOwl Documentation for Pull Request -->
 # KitchenOwl - స్వీయ-హోస్ట్ రెసిపీ మేనేజ్‌మెంట్ సర్వర్
 
 ## ప్రాజెక్ట్ అవలోకనం
