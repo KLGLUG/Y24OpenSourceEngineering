@@ -9,7 +9,7 @@
 3. प्रोजेक्ट चलाएँ: `npm start`
 
 ## Video Demo
-[Google Drive Video](https://drive.google.com/https://drive.google.com/file/d/1DjHGjCzztVgL1uZtP0xloQ0Uex6FAEsZ/view?usp=sharing)
+[Google Drive Video](https://drive.google.com/file/d/1DjHGjCzztVgL1uZtP0xloQ0Uex6FAEsZ/view?usp=drive_link)
 
 ## LinkedIn Post
 [My LinkedIn Post](https://www.linkedin.com/posts/https://www.linkedin.com/posts/arunkumar2418_opensource-hacktoberfest-kluniversity-activity-7391890251226640384-2Ezc?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFeVAocBFBuFEp5FQn2i5s3V0vNf7YqVpyc)
