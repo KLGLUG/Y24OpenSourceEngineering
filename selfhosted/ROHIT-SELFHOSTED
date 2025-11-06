@@ -1,0 +1,99 @@
+
+ Icecast2 + BUTT తో స్ట్రీమింగ్ రేడియో
+
+ఇది Ubuntu server లో Icecast2 install చేసి,
+BUTT ఉపయోగించి live audio stream చేయడం గురించి గైడ్.
+
+
+ఈ గైడ్‌లో Ubuntu server లో Icecast2 ని install చేసి,
+BUTT ద్వారా live audio stream చేయడం ఎలా చేయాలో చూపించబడింది.
+
+ అవసరమైనవి:
+
+- Ubuntu 20.04+
+- Icecast2
+- BUTT (Broadcast Using This Tool)
+- Mic లేదా Audio Input
+
+ Icecast2 ఇన్‌స్టాల్ చేయడం:
+
+bash
+sudo apt update
+sudo apt install icecast2
+
+ ప్రాజెక్ట్ ని ఎలా రన్ చేయాలి (How to Run)
+Icecast2 సర్వర్ స్టార్ట్ చేయడం
+sudo systemctl start icecast2
+
+సర్వర్ స్టేటస్ చూడడం
+systemctl status icecast2
+
+సర్వర్ రీస్టార్ట్ చేయడం
+sudo systemctl restart icecast2
+
+సర్వర్ బూట్ సమయంలో ఆటోమేటిక్ గా రన్ కావడానికి
+sudo systemctl enable icecast2
+
+
+వెబ్ డాష్‌బోర్డ్ ఓపెన్ చేయడం
+మీ బ్రౌజర్ లో ఈ URL ఓపెన్ చేయండి:
+http://SERVER-IP:8000
+
+Example:
+http://192.168.1.50:8000
+
+Login వివరాలు:
+Username: admin
+
+
+Password: మీరు సెటప్ చేసిన admin password
+
+
+
+ BUTT ద్వారా స్ట్రీమ్ ప్రారంభించటం
+BUTT software open చేయండి
+
+
+Settings → Server → మీ Icecast server select చెయ్యండి
+
+
+“Start Streaming” / “Play” నొక్కండి
+
+
+BUTT లో గ్రీన్ లైట్ కనబడితే — stream live ✅
+
+లిసనర్స్ కోసం స్ట్రీమ్ URL
+http://SERVER-IP:8000/stream
+
+టెస్ట్ కోసం VLC లో
+vlc http://SERVER-IP:8000/stream
+
+
+
+
+సాధారణ Errors & పరిష్కారం
+సమస్య
+పరిష్కారం
+Stream connect అవ్వడం లేదు
+BUTT లో IP/Password చెక్ చేయండి
+Browser లో site రాదు
+sudo systemctl status icecast2
+Public lo stream open కాదా?
+sudo ufw allow 8000/tcp
+
+
+Quick Checklist
+Icecast run అవుతోంది
+
+
+Port 8000 open ఉంది
+
+
+BUTT connect అయ్యింది
+
+
+Stream URL ప్లే అవుతోంది
+DRIVE LINK:https://drive.google.com/file/d/1Mfd-loAbKV-ufwHQJ5VvQyFoOn7tLtQw/view?usp=drive_link
+
+
+
