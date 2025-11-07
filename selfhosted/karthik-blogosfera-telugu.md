@@ -114,7 +114,8 @@ https://drive.google.com/file/d/1VJQXOGa-WUJ3GM_0OkJDJ7e2IkXYTUEf/view?usp=shari
 https://www.linkedin.com/posts/d-karthiksai-834ba62a9_blogosfera-ghost-opensource-activity-7392521241154404352-4nCq
 ## టీమ్ మెంబర్స్
 
-- Karthik
+- Damu Karthik
+- Saikumar Vasa
 
 ## రిసోర్సెస్
 
