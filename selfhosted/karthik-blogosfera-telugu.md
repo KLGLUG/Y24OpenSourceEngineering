@@ -111,8 +111,7 @@ ghost doctor
 
 ## LinkedIn పోస్ట్
 
-[LinkedIn పోస్ట్ URL ఇక్కడ జోడించండి]
-
+https://www.linkedin.com/posts/d-karthiksai-834ba62a9_blogosfera-ghost-opensource-activity-7392521241154404352-4nCq
 ## టీమ్ మెంబర్స్
 
 - Karthik
