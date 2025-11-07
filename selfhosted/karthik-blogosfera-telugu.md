@@ -107,7 +107,7 @@ ghost doctor
 
 ## డెమో వీడియో
 
-[Google Drive వీడియో లింక్ ఇక్కడ జోడించండి]
+https://drive.google.com/file/d/1VJQXOGa-WUJ3GM_0OkJDJ7e2IkXYTUEf/view?usp=sharing
 
 ## LinkedIn పోస్ట్
 
