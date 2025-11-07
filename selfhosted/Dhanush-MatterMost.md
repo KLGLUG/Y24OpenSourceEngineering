@@ -1,111 +1,98 @@
- What is Mattermost?
+Mattermost क्या है?
 
-Mattermost is an open-source team collaboration and messaging platform (like Slack or Microsoft Teams).
-It helps teams chat, share files, manage projects, and integrate DevOps tools — all while giving you full control over your data, since you can self-host it on your own server.
+Mattermost एक ओपन-सोर्स टीम सहयोग और मैसेजिंग प्लेटफ़ॉर्म है (Slack या Microsoft Teams की तरह)। यह टीमों को चैट करने, फ़ाइलें साझा करने, प्रोजेक्ट्स प्रबंधित करने और DevOps टूल्स को एकीकृत करने में मदद करता है — साथ ही यह आपको आपके डेटा पर पूरा नियंत्रण देता है, क्योंकि आप इसे अपने सर्वर पर स्वयं होस्ट कर सकते हैं।
 
-Main Services / Components of Mattermost
-
+Mattermost की मुख्य सेवाएँ / घटक
 Mattermost Server
 
-The core backend service written in Go.
+मुख्य बैकएंड सेवा जो Go में लिखी गई है।
 
-Manages authentication, messaging, file storage, and API.
+यह प्रमाणीकरण, संदेश, फ़ाइल भंडारण और API को प्रबंधित करती है।
 
 Mattermost Web App
 
-The frontend (React-based) interface users interact with via browser.
+यह React आधारित फ्रंटएंड इंटरफ़ेस है जिससे उपयोगकर्ता ब्राउज़र के माध्यम से इंटरैक्ट करते हैं।
 
 Database
 
-Uses PostgreSQL or MySQL to store all data (messages, users, channels).
+PostgreSQL या MySQL का उपयोग सभी डेटा (संदेश, उपयोगकर्ता, चैनल) को संग्रहीत करने के लिए किया जाता है।
 
 File Storage
 
-Can use local disk, Amazon S3, or other object storage for file uploads.
+फ़ाइल अपलोड के लिए लोकल डिस्क, Amazon S3 या अन्य ऑब्जेक्ट स्टोरेज का उपयोग किया जा सकता है।
 
-Push Notification Service (optional)
+Push Notification Service (वैकल्पिक)
 
-Handles mobile notifications (either via Mattermost Cloud or your own setup).
+मोबाइल नोटिफिकेशन को संभालती है (या तो Mattermost Cloud के माध्यम से या आपके अपने सेटअप के द्वारा)।
 
- How to Host Mattermost on Your System (Local Setup)
-Option 1: Using Docker (recommended for quick setup)
+अपने सिस्टम पर Mattermost को होस्ट कैसे करें (लोकल सेटअप)
+विकल्प 1: Docker का उपयोग करके (त्वरित सेटअप के लिए अनुशंसित)
 
-Steps:
+कदम:
 
-Install Docker
- and Docker Compose
-.
+Docker और Docker Compose इंस्टॉल करें।
 
-Create a directory and go inside it:
+एक डायरेक्टरी बनाएं और उसके अंदर जाएँ:
 
 mkdir mattermost && cd mattermost
 
 
-Download the official docker-compose.yml:
+आधिकारिक docker-compose.yml डाउनलोड करें:
 
 curl -O https://raw.githubusercontent.com/mattermost/docker/master/docker-compose.yml
 
 
-Start the services:
+सेवाओं को प्रारंभ करें:
 
 docker-compose up -d
 
 
-Open your browser and go to:
- http://localhost:8065
+अपने ब्राउज़र में जाएँ और खोलें: http://localhost:8065
 
-You’ll see the Mattermost setup screen. Create your admin account and workspace.
+आपको Mattermost सेटअप स्क्रीन दिखाई देगी। अपना एडमिन खाता और वर्कस्पेस बनाएँ।
 
-Option 2: Manual Installation (Ubuntu example)
-
-Install PostgreSQL
-
+विकल्प 2: मैनुअल इंस्टॉलेशन (Ubuntu उदाहरण)
+1. PostgreSQL इंस्टॉल करें
 sudo apt update
 sudo apt install postgresql postgresql-contrib
 
-
-Create database and user
-
+2. डेटाबेस और उपयोगकर्ता बनाएँ
 sudo -u postgres psql
 CREATE DATABASE mattermost;
 CREATE USER mmuser WITH PASSWORD 'yourpassword';
 GRANT ALL PRIVILEGES ON DATABASE mattermost TO mmuser;
 \q
 
-
-Download Mattermost
-
+3. Mattermost डाउनलोड करें
 wget https://releases.mattermost.com/X.Y.Z/mattermost-X.Y.Z-linux-amd64.tar.gz
 
 
-(Replace X.Y.Z with the latest version, e.g. 9.0.0)
+(यहाँ X.Y.Z को नवीनतम संस्करण से बदलें, जैसे 9.0.0)
 
-Extract and move it
-
+4. Extract करें और मूव करें
 tar -xvzf mattermost-*.tar.gz
 sudo mv mattermost /opt
 sudo mkdir /opt/mattermost/data
 
-
-Edit the config file
-
+5. कॉन्फ़िगरेशन फ़ाइल संपादित करें
 sudo nano /opt/mattermost/config/config.json
 
 
-Update:
+निम्नलिखित अपडेट करें:
 
 "DriverName": "postgres",
 "DataSource": "postgres://mmuser:yourpassword@localhost:5432/mattermost?sslmode=disable"
 
-
-Start the server
-
+6. सर्वर प्रारंभ करें
 cd /opt/mattermost
 sudo ./bin/mattermost
 
+7. ब्राउज़र में जाएँ
 
-Visit http://localhost:8065 in your browser.
+http://localhost:8065
 
+आपको Mattermost सेटअप स्क्रीन दिखाई देगी।
 
-Below is the video url showing the features of MatterMost :-> 
-(https://drive.google.com/file/d/1vcP_4G23NcgNoC0Hzv8J_0U3fh_c3CbT/view?usp=drive_link)
+नीचे दिया गया वीडियो लिंक Mattermost की विशेषताएँ दिखाता है:
+
+🎥 https://drive.google.com/file/d/1vcP_4G23NcgNoC0Hzv8J_0U3fh_c3CbT/view?usp=drive_link
