@@ -1,0 +1,29 @@
+# Uptime Kuma Self-Hosted డెమో
+
+## వివరణ
+Uptime Kuma ఒక self-hosted మానిటరింగ్ టూల్.  
+ఇది వెబ్‌సైట్లు, APIs, మరియు సర్వర్లు uptime ని real-time లో మానిటర్ చేస్తుంది.  
+Downtime alerts అందించడం ద్వారా మీరు సర్వీసుల ఆరోగ్యాన్ని ఎప్పటికప్పుడు track చేయవచ్చు.
+
+### ప్రధాన లక్షణాలు
+- వెబ్‌సైట్లు, APIs, మరియు TCP/HTTP monitors కోసం uptime మానిటరింగ్  
+- SMTP, Discord, Telegram alerts పంపగలదు  
+- డ్యాష్‌బోర్డు లో statuses ను గ్రాఫ్ మరియు లిస్ట్ రూపంలో చూపిస్తుంది  
+- ఒకేసారి అనేక monitors ని ట్రాక్ చేయడం  
+- Docker లేదా Node.js ఉపయోగించి self-hosted గా సెట్ చేయడం సులభం  
+- Custom notification templates మరియు alert intervals support  
+- Light-weight మరియు responsive web interface  
+
+### ఉపయోగాలు
+- ప్రాజెక్ట్ లేదా సర్వర్ ఎప్పుడూ online లో ఉందో లేదా down అయ్యిందో track చేయడానికి  
+- Alerts ద్వారా downtime notify అవ్వడం  
+- Real-time performance statistics collection కోసం  
+- Small team, DevOps, లేదా personal projects కోసం ideal tool  
+- Cron jobs, background services, లేదా APIs monitor చేయడం  
+- Historical data మరియు logs ద్వారా analysis చేయడం  
+
+## ఇన్‌స్టలేషన్ స్టెప్స్
+1. Docker లేదా Node.js ఇన్‌స్టాల్ చేయండి.  
+2. GitHub నుండి ప్రాజెక్ట్ క్లోన్ చేయండి:  
+   ```bash
+   git clone https://github.com/louislam/uptime-kuma.git
