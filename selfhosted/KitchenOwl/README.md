@@ -1,4 +1,3 @@
-<!-- KitchenOwl Documentation for Pull Request -->
 # KitchenOwl - స్వీయ-హోస్ట్ రెసిపీ మేనేజ్‌మెంట్ సర్వర్
 
 ## ప్రాజెక్ట్ అవలోకనం
@@ -84,4 +83,3 @@ http://localhost:
 linkedin post:https://www.linkedin.com/pulse/kitchen-owl-self-hosted-server-spandana-kona-roroe
 
 Server Hosting video:https://drive.google.com/file/d/1FWh6XvEezxVTzPyCurBaG09IGv5Bcr3r/view?usp=sharing
-
