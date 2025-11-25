@@ -1,0 +1,994 @@
+\documentclass[12pt,a4paper]{article}
+
+% Essential packages only
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\hypersetup{
+    hidelinks
+}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{enumitem}
+
+% Code listing setup
+\lstset{
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    frame=single,
+    numbers=left,
+    numberstyle=\tiny,
+    backgroundcolor=\color{gray!10}
+}
+
+% Header/Footer
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Open Source Engineering }
+\lhead{Lakkakula Yashvanth Kumar}
+\rfoot{Page \thepage}
+
+
+
+
+% Title formatting
+\titleformat{\section}{\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
+
+\begin{document}
+
+% ============ FRONT PAGE ============
+\begin{titlepage}
+    \centering
+    \vspace*{0.5cm}
+    
+    {\Huge\bfseries Open Source Engineering\\[0.5cm] \par}
+    \vspace{1cm}
+   \begin{figure}[h!]
+    \centering
+    \includegraphics[width=\linewidth]{ubuntu.jpg}
+    \caption{Linux makes Open Source possible}
+\end{figure}
+\begin{center}
+{\Large\bfseries Student Details}
+
+\vspace{0.5cm}
+
+\begin{tabular}{ll}
+    \textbf{Name:} & LAKKAKULA YASHVANTH KUMAR \\[0.3cm]
+    \textbf{Roll Number:} & 2400040031 \\[0.3cm]
+    \textbf{Department:} & Electronics and Communication Engineering \\[0.3cm]
+    \textbf{University:} & KL University \\[0.3cm]
+    \textbf{Course:} & Open Source Engineering \\[0.3cm]
+    \textbf{Semester:} & ODD SEMESTER \\[0.13cm]
+\end{tabular}
+\end{center}
+    
+    \vfill
+    
+    {\large Submitted to:\\[0.3cm]
+    \textbf{Dr.AruneKumar}\\
+    Department of Computer Science and Engineering\\
+    KL University\par}
+    
+    \vspace{1cm}
+\end{titlepage}
+
+\newpage
+\tableofcontents
+\newpage
+
+% ============ SECTION 1: LINUX DISTRO ============
+\section{Linux Distribution}
+
+\subsection{Distribution Used: Ubuntu 24.04 LTS}
+
+For this course named Open Source Engineering, I have used \textbf{Ubuntu 22.04 LTS} as my primary operating system.
+
+\subsection{Why Ubuntu?}
+
+Ubuntu quickly became my go-to Linux distribution during this journey, not just because it is popular, but because it genuinely made the entire learning experience smoother and more enjoyable.
+\begin{itemize}
+    \item \textbf{Beginner-Friendly Yet Powerful:} Even though I was new to Linux, Ubuntu never made me feel lost. Its clean interface and predictable behavior helped me learn faster.
+    \item \textbf{LTS Means Peace of Mind:} The Long Term Support (LTS) version receives updates for several years, which means fewer risks, fewer crashes, and more focus on learning instead of fixing.
+    \item \textbf{A Community That Never Sleeps:} Every error I faced already had someone discussing or solving it online. Forums, blogs, and tutorials make Ubuntu feel like a guided journey.
+    \item \textbf{Software at Your Fingertips:} Whether I needed Git, Python, servers, or development tools, Ubuntu’s APT package manager handled everything with a single command.
+    \item \textbf{Stable Enough for Experiments:} Throughout installations, crashes, and re-installs, Ubuntu proved stable and reliable—perfect for someone exploring open source hands-on.
+
+\end{itemize}
+\{\subsection{Key Features of My Ubuntu 24.04 System}
+
+\begin{enumerate}
+    \item \textbf{Desktop Environment:} GNOME 46.0
+    \item \textbf{Kernel Version:} Linux 6.14.0-35-generic
+    \item \textbf{Package Manager:} APT 2.8.3 (amd64)
+    \item \textbf{Default Applications:} 
+        Brave Browser 142.1.84.141, 
+        LibreOffice 24.2.7.2, 
+        GNOME Core Utilities
+    \item \textbf{Snap Support:} 
+        snap 2.72+ubuntu24.04, 
+        snapd 2.72+ubuntu24.04, 
+        series 16, architecture amd64
+\end{enumerate}
+
+\subsection{System Specifications}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\linewidth]{systemdetails.png}
+    \caption{System Information}
+    \label{fig:system-info}
+\end{figure}
+
+My system configuration:
+\begin{itemize}
+    \item Operating System: Ubuntu 24.04 LTS
+    \item Architecture: amd64
+    \item Desktop Environment: GNOME 46.0
+    \item Shell: Bash 5.1
+\end{itemize}
+
+\subsection{Installation Process}
+
+The installation involved:
+\begin{enumerate}
+    \item Downloaded Ubuntu 24.04 LTS ISO from the official website
+    \item Created a bootable USB using Rufus/Etcher
+    \item Configured dual boot with the existing OS
+    \item Installed essential development tools
+    \item Configured the system for open source development
+\end{enumerate}
+
+
+% ============ SECTION 2: ENCRYPTION AND GPG ============
+\section{Encryption and GPG}
+
+\subsection{What is Encryption?}
+Encryption converts readable data (plaintext) into unreadable data (ciphertext) so that only authorized users can access it.
+
+\subsection{Types of Encryption}
+
+\subsubsection{Symmetric Encryption}
+\begin{itemize}
+    \item Same key is used for both encryption and decryption.
+    \item Examples: AES, DES.
+\end{itemize}
+
+\subsubsection{Asymmetric Encryption}
+\begin{itemize}
+    \item Uses two keys: a public key (to encrypt) and a private key (to decrypt).
+    \item Examples: RSA, ECC.
+\end{itemize}
+
+\subsection{GNU Privacy Guard (GPG)}
+GPG is a free tool used for generating keys, encrypting files, and signing data using the OpenPGP standard.
+
+\subsection{Installing GPG}
+\begin{lstlisting}[language=bash]
+sudo apt update
+sudo apt install gnupg
+gpg --version
+\end{lstlisting}
+
+\subsection{Generating GPG Keys}
+\begin{lstlisting}[language=bash]
+gpg --full-generate-key
+\end{lstlisting}
+
+\textbf{Steps:}
+\begin{enumerate}
+    \item Choose RSA and RSA (default).
+    \item Select key size: 4096 bits.
+    \item Set validity: 1 year.
+    \item Enter your name and email.
+    \item Create a strong passphrase.
+\end{enumerate}
+
+\subsection{Listing Keys}
+\begin{lstlisting}[language=bash]
+gpg --list-keys
+gpg --list-secret-keys
+\end{lstlisting}
+
+\subsection{Exporting Your Public Key}
+\begin{lstlisting}[language=bash]
+gpg --armor --export your-email@example.com > public-key.asc
+\end{lstlisting}
+
+\subsection{Encrypting a File}
+\begin{lstlisting}[language=bash]
+gpg --encrypt --recipient your-email@example.com document.txt
+\end{lstlisting}
+
+\subsection{Decrypting a File}
+\begin{lstlisting}[language=bash]
+gpg --decrypt document.txt.gpg > document.txt
+\end{lstlisting}
+
+% ---------------- EMAIL ENCRYPTION ----------------
+
+\section{Sending Encrypted Email}
+
+\subsection{Email Encryption Overview}
+Email encryption protects messages from being read by anyone except the intended recipient.
+
+\subsection{Tools Used}
+\begin{itemize}
+    \item \textbf{Thunderbird} – Email client with OpenPGP support.
+    \item \textbf{GPG Keys} – Used to encrypt and sign emails.
+    \item \textbf{ProtonMail} – Alternative encrypted email service.
+\end{itemize}
+
+\subsection{Setting Up Thunderbird for GPG}
+
+\subsubsection{Install Thunderbird}
+\begin{lstlisting}[language=bash]
+sudo apt install thunderbird
+\end{lstlisting}
+
+\subsubsection{Enable OpenPGP}
+\begin{enumerate}
+    \item Open Thunderbird.
+    \item Go to \textbf{Account Settings}.
+    \item Select \textbf{End-to-End Encryption}.
+    \item Add your GPG key (or generate a new one).
+    \item Import the recipient's public key.
+\end{enumerate}
+
+\subsection{Sending an Encrypted Email}
+\begin{enumerate}
+    \item Compose a new email.
+    \item Click \textbf{Security}.
+    \item Choose \textbf{Require Encryption}.
+    \item (Optional) Add a digital signature.
+    \item Send the email.
+\end{enumerate}
+
+\subsection{Receiving an Encrypted Email}
+\begin{enumerate}
+    \item Message arrives encrypted.
+    \item Thunderbird detects encryption automatically.
+    \item Enter your GPG key passphrase.
+    \item Email is decrypted and displayed.
+\end{enumerate}
+
+\subsection{Best Practices}
+\begin{itemize}
+    \item Never share your private key.
+    \item Use a strong passphrase.
+    \item Backup your keys.
+    \item Keep your key updated.
+    \item Always verify public key fingerprints.
+\end{itemize}
+
+% ============ SECTION 4: PRIVACY TOOLS ============
+\section{Open Source Tools for Daily Use}
+
+\subsection{Why Use Open Source Tools?}
+Open source tools are free, transparent, community-supported, and safe for student use. They help in learning, productivity, coding, writing, and even creative tasks without any restrictions or tracking.
+
+% ---------------- TOOL 1 ----------------
+\subsection{Tool 1: VS Codium – Open Source Code Editor}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=10cm]{Screenshot from 2025-11-25 23-21-34.png}
+    \caption{VS codium working interface}
+\end{figure}
+
+
+\textbf{Description:}  
+VS Codium is the telemetry-free, completely open source version of VS Code. It feels exactly the same as VS Code but without data tracking.
+
+\textbf{How Students Use It:}
+\begin{itemize}
+    \item Coding in C, C++, Python, Java, HTML, etc.
+    \item Debugging programs inside the editor.
+    \item Using extensions to speed up development.
+\end{itemize}
+
+\textbf{Key Features:}
+\begin{itemize}
+    \item Zero telemetry and tracking
+    \item Works on all OS platforms
+    \item Supports thousands of extensions
+\end{itemize}
+
+\textbf{Shortcut Tip:}  
+\texttt{Ctrl + Shift + P} → Open command palette.
+
+% ---------------- TOOL 2 ----------------
+\subsection{Tool 2: Gedit – Simple GNOME Text Editor}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=10cm]{gedit.png}
+    \caption{gedit working interface}
+\end{figure}
+
+\textbf{Description:}  
+Gedit is a lightweight and beginner-friendly text editor perfect for quick editing and scripting.
+
+\textbf{How Students Use It:}
+\begin{itemize}
+    \item Writing small programs quickly.
+    \item Editing configuration files.
+    \item Making short notes or logs.
+\end{itemize}
+
+\textbf{Key Features:}
+\begin{itemize}
+    \item Syntax highlighting for multiple languages
+    \item Very lightweight and fast
+    \item Simple UI for beginners
+\end{itemize}
+
+\textbf{Shortcut Tip:}  
+\texttt{Ctrl + F} → Find text instantly.
+
+% ---------------- TOOL 3 ----------------
+\subsection{Tool 3: LibreOffice – Full Office Suite}
+
+\textbf{Description:}  
+LibreOffice is the open-source alternative to MS Office, including Writer, Calc, Impress, and Draw.
+
+\textbf{How Students Use It:}
+\begin{itemize}
+    \item Writing reports and assignments (Writer)
+    \item Creating presentations (Impress)
+    \item Maintaining tables and lab data (Calc)
+\end{itemize}
+
+\textbf{Key Features:}
+\begin{itemize}
+    \item Offline, free, and open source
+    \item Exports PDFs in one click
+    \item Opens and edits MS Office files
+\end{itemize}
+
+\textbf{Shortcut Tip:}  
+\texttt{Ctrl + Shift + P} → Quickly add superscript.
+
+% ---------------- TOOL 4 ----------------
+\subsection{Tool 4: Thunderbird – Email Client with Encryption}
+
+\textbf{Description:}  
+Thunderbird helps manage all email accounts in one simple interface and supports encryption with OpenPGP.
+
+\textbf{How Students Use It:}
+\begin{itemize}
+    \item Managing college and personal emails
+    \item Sending GPG encrypted messages
+    \item Organizing tasks and schedules
+\end{itemize}
+
+\textbf{Key Features:}
+\begin{itemize}
+    \item Multi-account support
+    \item Strong privacy protections
+    \item Built-in calendar and tasks
+\end{itemize}
+
+\textbf{Shortcut Tip:}  
+\texttt{Ctrl + N} → Compose a new email instantly.
+
+% ---------------- TOOL 5 ----------------
+\subsection{Tool 5: Firefox – Privacy-Focused Web Browser}
+
+\textbf{Description:}  
+Firefox is a fully open-source browser known for strong privacy, speed, and extensions.
+
+\textbf{How Students Use It:}
+\begin{itemize}
+    \item Research and online study
+    \item Using extensions for productivity
+    \item Privacy-safe browsing
+\end{itemize}
+
+\textbf{Privacy Features:}
+\begin{itemize}
+    \item Enhanced Tracking Protection
+    \item DNS-over-HTTPS support
+    \item Container Tabs for separating accounts
+\end{itemize}
+
+\textbf{Useful Tip:}  
+Enable \textbf{Strict Mode} in Settings → Privacy.
+
+% ---------------- TOOL 6 ----------------
+\subsection{Tool 6: Shotcut – Open Source Video Editor}
+
+\textbf{Description:}  
+Shotcut is a free video editor used for making project videos, presentations, and tutorials.
+
+\textbf{How Students Use It:}
+\begin{itemize}
+    \item Editing practical videos
+    \item Creating presentations or animations
+    \item Recording screen for submissions
+\end{itemize}
+
+\textbf{Key Features:}
+\begin{itemize}
+    \item Multi-track video editing
+    \item Built-in filters and effects
+    \item No watermark, no subscription
+\end{itemize}
+
+\textbf{Shortcut Tip:}  
+\texttt{S} → Split video clip at cursor.
+
+% ---------------- TOOL 7 ----------------
+\subsection{Tool 7: GIMP – Open Source Image Editing}
+
+\textbf{Description:}  
+GIMP is a powerful alternative to Photoshop, fully free and open-source.
+
+\textbf{How Students Use It:}
+\begin{itemize}
+    \item Editing images for projects
+    \item Designing posters or diagrams
+    \item Removing backgrounds or noise
+\end{itemize}
+
+\textbf{Key Features:}
+\begin{itemize}
+    \item Layers, masks, and filters like Photoshop
+    \item Supports plugins and custom brushes
+    \item Works on all platforms
+\end{itemize}
+
+\textbf{Shortcut Tip:}  
+\texttt{Ctrl + Shift + A} → Deselect selection.
+
+% ============ SECTION 5: OPEN SOURCE LICENSE ============
+\section{Open Source License}
+
+\subsection{License Used: MIT License}
+
+In my open source projects, I mostly use the \textbf{MIT License} because it is one of the simplest and most flexible licenses available for developers.
+
+\subsection{What is the MIT License?}
+
+The MIT License is a very easy-to-understand open source license. It allows anyone to:
+\begin{itemize}
+    \item Use the software for personal or commercial purposes
+    \item Modify and improve the code freely
+    \item Share the software with anyone
+    \item Include it in their own projects (even paid projects)
+    \item Create their own versions based on the original work
+\end{itemize}
+
+\subsection{MIT License Text (Example)}
+
+\begin{lstlisting}
+MIT License
+
+Copyright (c) 2025 MR.YESHU
+
+Permission is hereby granted, free of charge, to any person 
+obtaining a copy of this software and associated documentation 
+files (the "Software"), to deal in the Software without 
+restriction, including without limitation the rights to use, 
+copy, modify, merge, publish, distribute, sublicense, and/or 
+sell copies of the Software, and to permit persons to whom the 
+Software is furnished to do so, subject to the following 
+conditions:
+
+The above copyright notice and this permission notice shall be 
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND...
+\end{lstlisting}
+
+\subsection{Why I Prefer the MIT License}
+
+\begin{itemize}
+    \item \textbf{Very Simple:} The entire license is short, clear, and easy to understand even for beginners.
+    
+    \item \textbf{Highly Permissive:} Anyone can use, modify, and share your work without restrictions.
+    
+    \item \textbf{Good for Students:} Great for learning, collaboration, and contributing because people can build on your work easily.
+    
+    \item \textbf{Developer-Friendly:} Companies and developers prefer MIT because it does not force them to open-source their entire project.
+    
+    \item \textbf{No Legal Complexity:} No strict requirements or complicated legal terms — just use it and go.
+    
+    \item \textbf{Encourages Innovation:} Makes it easy for others to adopt, improve, and extend your software.
+\end{itemize}
+
+\subsection{Other Common Open Source Licenses (Simple Overview)}
+
+\subsubsection{GPL (GNU General Public License)}
+\begin{itemize}
+    \item Strong copyleft license.
+    \item If you modify and distribute the software, your version must also be open source.
+    \item Used by the Linux Kernel.
+\end{itemize}
+
+\subsubsection{Apache License 2.0}
+\begin{itemize}
+    \item Permissive like MIT but includes patent protection.
+    \item Suitable for large company-backed projects.
+    \item Used by Apache, Kubernetes, and many cloud tools.
+\end{itemize}
+
+\subsubsection{BSD License}
+\begin{itemize}
+    \item Extremely permissive, very similar to MIT.
+    \item Allows almost complete freedom with minimal conditions.
+    \item Used by FreeBSD and other OS-level projects.
+\end{itemize}
+
+% ============ SECTION 6: SELF-HOSTED SERVER ============
+\section{Self-Hosted Server: Gladys Smart Home Assistant}
+
+\subsection{What is Gladys?}
+
+Gladys is an open-source smart home assistant that allows users to control and automate devices in their home. 
+It runs locally on your own system, which means:
+\begin{itemize}
+    \item Your data stays private
+    \item No cloud dependency
+    \item Full customization
+    \item Ability to integrate any API you want
+\end{itemize}
+
+Gladys works similar to Alexa or Google Home, but instead of depending on cloud servers, it runs \textbf{locally on your machine} and is completely open source.
+
+\subsection{What Can Gladys Do?}
+
+With Gladys, you can:
+\begin{itemize}
+    \item Control smart home devices (lights, fans, AC, TV)
+    \item Monitor temperature, weather, humidity via APIs
+    \item Receive live updates every second
+    \item Create automation rules (e.g., turn on fan when temperature $>$ 30°C)
+    \item Add smart cleaners, washing machines, or any IoT device using “Link Devices”
+\end{itemize}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\linewidth]{gladys-dashboard.png}
+    \caption{Gladys Home Assistant Dashboard}
+    \label{fig:gladys-dashboard}
+\end{figure}
+
+\subsection{Why I Self-Hosted Gladys?}
+
+\begin{enumerate}
+    \item \textbf{Data Privacy:} Everything runs locally; no data leaves my system.
+    \item \textbf{Customization:} I can add or modify features freely.
+    \item \textbf{API Integration:} I can connect weather, temperature, or custom APIs.
+    \item \textbf{Real-Time Updates:} Gladys responds instantly without any cloud delay.
+    \item \textbf{Learning Experience:} Helped me understand APIs, Node.js, and hosting.
+\end{enumerate}
+
+\subsection{System Requirements}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Component} & \textbf{Minimum Requirement} \\
+\hline
+Operating System & Ubuntu 24.04 LTS \\
+\hline
+Node.js Version & v16 or higher \\
+\hline
+npm Version & Latest recommended \\
+\hline
+RAM & 1 GB \\
+\hline
+Storage & 1 GB free \\
+\hline
+Network & Local network or Wi-Fi \\
+\hline
+\end{tabular}
+\caption{Gladys System Requirements}
+\end{table}
+
+\subsection{Installation Guide}
+
+This is the method I used to host Gladys using \textbf{Node.js and npm}.
+
+\subsubsection{Step 1: Install Node.js and npm}
+
+\begin{lstlisting}[language=bash]
+sudo apt update
+sudo apt install nodejs npm -y
+node -v
+npm -v
+\end{lstlisting}
+
+\subsubsection{Step 2: Clone Gladys Repository}
+
+\begin{lstlisting}[language=bash]
+git clone https://github.com/GladysAssistant/Gladys.git
+cd Gladys
+\end{lstlisting}
+
+\subsubsection{Step 3: Install Dependencies}
+
+\begin{lstlisting}[language=bash]
+npm install
+\end{lstlisting}
+
+\subsubsection{Step 4: Start Gladys Server}
+
+\begin{lstlisting}[language=bash]
+npm start
+\end{lstlisting}
+
+Gladys will now run on:
+\begin{lstlisting}
+http://localhost:1443
+\end{lstlisting}
+
+\subsection{API Integration in Gladys}
+
+Gladys becomes powerful when we integrate APIs.  
+For example:
+\begin{itemize}
+    \item Weather API for live temperature updates
+    \item Smart device API for turning devices on/off
+    \item Sensor APIs for home automation
+\end{itemize}
+
+\textbf{How API Integration Works:}
+
+\begin{enumerate}
+    \item Get a free Open Source API key (e.g., weather API).
+    \item Add it inside Gladys API configuration page.
+    \item Gladys fetches real-time data every second or as configured.
+    \item Devices/actions can be triggered based on API values.
+\end{enumerate}
+
+\textbf{Example: Temperature Automation}
+
+\begin{lstlisting}[language=json]
+{
+  "rule": "If temperature > 30°C",
+  "action": "Turn ON the fan",
+  "source": "WeatherAPI"
+}
+\end{lstlisting}
+
+\subsection{Linking Devices}
+
+Gladys provides a built-in option called \textbf{“Link Devices”}.  
+Using this, I connected:
+
+\begin{itemize}
+    \item Smart Fan
+    \item Smart Bulb
+    \item Wi-Fi-enabled TV
+    \item Smart AC Controller
+\end{itemize}
+
+Each device can be:
+\begin{itemize}
+    \item Switched ON/OFF
+    \item Automated based on rules
+    \item Monitored continuously
+\end{itemize}
+
+\subsection{Key Features of Gladys}
+
+\begin{itemize}
+    \item Real-time smart home control
+    \item Multi-device integration
+    \item Automation rules engine
+    \item API-based sensor data
+    \item Web dashboard for everything
+    \item Full control through mobile or PC
+\end{itemize}
+
+\subsection{Benefits of Self-Hosting Gladys}
+
+\begin{enumerate}
+    \item \textbf{Privacy:} No external servers involved.
+    \item \textbf{Zero Cost:} 100\% free open-source platform.
+    \item \textbf{Full Control:} Edit, modify, or expand the system.
+    \item \textbf{Learning:} Helps understand Node.js, APIs, hosting, and IoT.
+    \item \textbf{Local Automation:} Works even without internet.
+\end{enumerate}
+
+\subsection{Backup and Maintenance}
+
+\subsubsection{Backup Configuration}
+
+\begin{lstlisting}[language=bash]
+cp -r ~/.gladys backups/gladys-backup/
+\end{lstlisting}
+
+\subsubsection{Update Gladys}
+
+\begin{lstlisting}[language=bash]
+git pull
+npm install
+npm restart
+\end{lstlisting}
+
+\subsection{Useful Resources}
+
+\begin{itemize}
+    \item Official Website: \url{https://gladysassistant.com}
+    \item GitHub Source Code: \url{https://github.com/GladysAssistant/Gladys}
+    \item Documentation: \url{https://documentation.gladysassistant.com}
+\end{itemize}
+
+
+% ============ SECTION 7: OPEN SOURCE CONTRIBUTIONS ============
+\section{Open Source Contributions Overview}
+
+Open source contributions helped me understand real-world software development, documentation standards, community collaboration, and code quality. Below is a structured overview of all my contributions, divided into \textbf{Open} and \textbf{Merged} pull requests with detailed issue and solution descriptions.
+
+% ==============================================================
+% ====================== OPEN PRs SECTION =======================
+% ==============================================================
+
+\subsection{Open Pull Requests}
+
+\subsubsection{PR 1: Added Red-Black Tree Implementation in Python}
+\textbf{Repository:} bajajvinamr/HacktoberFest2020 \\
+\textbf{PR Number:} \#1190 \\
+\textbf{Status:} Open \\
+\textbf{Issue:} Repository lacked an efficient Red-Black Tree implementation. \\
+\textbf{Solution:} Implemented Red-Black Tree with insertion logic, rotations, and balancing rules, following algorithmic standards.
+
+\subsubsection{PR 2: Fixed Typos and Improved Formatting in README.md}
+\textbf{Repository:} codecrafters-io/build-your-own-x \\
+\textbf{PR Number:} \#1621 \\
+\textbf{Status:} Open \\
+\textbf{Issue:} README contained multiple formatting inconsistencies. \\
+\textbf{Solution:} Corrected grammar, improved structure, and reformatted long paragraphs.
+
+\subsubsection{PR 3: Added “Build Your Own Alexa Assistant” Project}
+\textbf{Repository:} codecrafters-io/build-your-own-x \\
+\textbf{PR Number:} \#1620 \\
+\textbf{Status:} Open \\
+\textbf{Issue:} Missing category for voice assistant projects. \\
+\textbf{Solution:} Added a new project entry guiding users to build an Alexa-like assistant.
+
+\subsubsection{PR 4: Added New JavaScript Interview Question}
+\textbf{Repository:} sudheerj/javascript-interview-questions \\
+\textbf{PR Number:} \#335 \\
+\textbf{Status:} Open \\
+\textbf{Issue:} Repository lacked coverage of certain JS concepts. \\
+\textbf{Solution:} Added a well-structured interview question with explanation.
+
+\subsubsection{PR 5: Added deepclone.js Function}
+\textbf{Repository:} sudheerj/javascript-interview-questions \\
+\textbf{PR Number:} \#331 \\
+\textbf{Status:} Open \\
+\textbf{Issue:} Deep cloning was not demonstrated in the repository. \\
+\textbf{Solution:} Created a robust deep cloning function in JavaScript.
+
+\subsubsection{PR 6: Added Usage Example Section to README}
+\textbf{Repository:} TheAlgorithms/Python \\
+\textbf{PR Number:} \#13884 \\
+\textbf{Status:} Open \\
+\textbf{Issue:} Many algorithms lacked usage examples. \\
+\textbf{Solution:} Added usage examples to improve readability for new contributors.
+
+\subsubsection{PR 7: Added Splay Tree Implementation with Type Hints}
+\textbf{Repository:} TheAlgorithms/Python \\
+\textbf{PR Number:} \#13883 \\
+\textbf{Status:} Open \\
+\textbf{Issue:} No type-hinted version of Splay Tree existed. \\
+\textbf{Solution:} Added a clean Splay Tree implementation with Python type hints.
+
+\subsubsection{PR 8: Added Gladys Documentation in Telugu}
+\textbf{Repository:} KLGLUG/Y24OpenSourceEngineering \\
+\textbf{PR Number:} \#155 \\
+\textbf{Status:} Open \\
+\textbf{Issue:} Regional users required onboarding documentation. \\
+\textbf{Solution:} Wrote complete Telugu documentation for Gladys.
+
+\subsubsection{PR 9: Added Linux Installation Steps for Thonny}
+\textbf{Repository:} thonny/thonny \\
+\textbf{PR Number:} \#3716 \\
+\textbf{Status:} Open \\
+\textbf{Issue:} Installation guide lacked Linux steps. \\
+\textbf{Solution:} Added detailed installation steps for Ubuntu-based systems.
+
+% ==============================================================
+% ===================== MERGED PRs SECTION =====================
+% ==============================================================
+
+\subsection{Merged Pull Requests}
+
+% Screenshot of Merged PRs
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\linewidth]{merged.png}
+    \caption{Merged Pull Requests Overview}
+\end{figure}
+
+\subsubsection{PR 10: Added Contributor Entry}
+\textbf{Repository:} yfosp/start-here \\
+\textbf{PR Number:} \#863 \\
+\textbf{Status:} Merged \\
+\textbf{Issue:} Contributor list needed update. \\
+\textbf{Solution:} Added my GitHub ID and contribution badge.
+
+\subsubsection{PR 11: Added Contribution File to Repository}
+\textbf{Repository:} fineanmol/hacktoberfest \\
+\textbf{PR Number:} \#3549 \\
+\textbf{Status:} Merged \\
+\textbf{Issue:} Repository lacked a contributions record. \\
+\textbf{Solution:} Added my contribution file in correct format.
+
+\subsubsection{PR 12: Added My Name to Contributors.md}
+\textbf{Repository:} zero-to-mastery/start-here-guidelines \\
+\textbf{PR Number:} \#23701 \\
+\textbf{Status:} Merged \\
+\textbf{Issue:} Contributors list required updating. \\
+\textbf{Solution:} Added my name with proper formatting.
+
+\subsubsection{PR 13: Added My Details in the Repo}
+\textbf{Repository:} firstcontributions/first-contributions \\
+\textbf{PR Number:} \#107029 \\
+\textbf{Status:} Merged \\
+\textbf{Issue:} Contributor list update required. \\
+\textbf{Solution:} Added my information to contributors.md.
+
+\subsubsection{PR 14: Added Usage Example Section to README}
+\textbf{Repository:} firstcontributions/first-contributions \\
+\textbf{PR Number:} \#107027 \\
+\textbf{Status:} Merged \\
+\textbf{Issue:} README lacked usage examples. \\
+\textbf{Solution:} Added a clear example section explaining contribution flow.
+
+% ==============================================================
+% ======================= SUMMARY TABLE ========================
+% ==============================================================
+
+\subsection{Contribution Summary}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|c|}
+\hline
+\textbf{Metric} & \textbf{Count} \\
+\hline
+Total Pull Requests & 14 \\
+\hline
+Open PRs & 9 \\
+\hline
+Merged PRs & 5 \\
+\hline
+Repositories Contributed & 10+ \\
+\hline
+Documentation Improvements & 7 \\
+\hline
+Code Contributions & 5 \\
+\hline
+Localization Work & 1 \\
+\hline
+\end{tabular}
+\caption{Open Source Contribution Statistics}
+\end{table}
+
+% ==============================================================
+% ======================= KEY LEARNINGS ========================
+% ==============================================================
+
+\subsection{Key Learnings from Contributions}
+
+\begin{enumerate}
+    \item \textbf{Git Workflow:} Mastered branching, committing, rebasing, and PR flow.
+    \item \textbf{Code Review:} Learned to handle reviewer feedback and improve quality.
+    \item \textbf{Documentation Writing:} Improved clarity, formatting, and readability.
+    \item \textbf{Collaboration:} Worked with global maintainers across multiple time zones.
+    \item \textbf{Algorithmic Thinking:} Implemented real data structures (RB Trees, Splay Trees).
+    \item \textbf{Localization Skills:} Wrote contributions in Telugu to help regional users.
+    \item \textbf{Professionalism:} Understood standards required for large open-source repos.
+\end{enumerate}
+% ============ SECTION 8: LINKEDIN POSTS ============
+\section{LinkedIn Posts}
+
+In addition to hands-on open source contributions, I have actively shared my learning journey and project updates on LinkedIn to inspire peers and document my progress. Below are the key posts related to my open-source and self-hosted server work.
+
+% --------------------------------------------------
+\subsection{Post 1: My First Open Source Contribution}
+
+\textbf{Link:} \url{https://www.linkedin.com/posts/yashvanth-kumar-lakkakula-134110352_opensource-github-developerjourney-activity-7398212740084932608-DFIX}
+
+\textbf{Summary:}  
+This was the announcement of my very first open source contribution. In this post, I shared how I took my initial step into the global developer community by raising my first PR, understanding version control workflows, and contributing to real-world projects.
+
+\textbf{Key Highlights:}
+\begin{itemize}
+    \item Overcame the fear of contributing to large repositories.
+    \item Understood GitHub workflow: forking, branching, committing, pull requests.
+    \item Gained confidence to solve documentation and code issues.
+    \item Marked the beginning of my Open Source Engineering journey.
+\end{itemize}
+
+% --------------------------------------------------
+\subsection{Post 2: My Open Source Blog – Success Journey in OSE}
+
+\textbf{Link:} \url{https://www.linkedin.com/posts/yashvanth-kumar-lakkakula-134110352_my-succes-journey-in-ose-activity-7398209427817930752-_AfA}
+
+\textbf{Summary:}  
+This blog post highlights my entire Open Source Engineering journey—from learning Linux, understanding collaborative development, to contributing to multiple global repositories. I documented the challenges, milestones, and the growth I experienced.
+
+\textbf{Key Highlights:}
+\begin{itemize}
+    \item Shared detailed steps I followed to get started in open source.
+    \item Explained how I selected beginner-friendly issues.
+    \item Reflected on skills gained: Git, documentation, debugging, community communication.
+    \item Motivated beginners by showing that anyone can contribute with consistency.
+\end{itemize}
+
+% --------------------------------------------------
+\subsection{Post 3: Self-Hosting Server Demonstration at Samyak Fest}
+
+\textbf{Link:} \url{https://www.linkedin.com/posts/yashvanth-kumar-lakkakula-134110352_my-succes-journey-in-ose-activity-7398209427817930752-_AfA}
+
+\textbf{Summary:}  
+In this post, I shared my experience presenting a fully self-hosted “Gladys — Smart Home Assistant Server” during Samyak, our university's technical fest. We demonstrated how a locally hosted smart assistant can handle home automation, real-time updates, and API-driven functionalities.
+
+\textbf{Key Highlights:}
+\begin{itemize}
+    \item Hosted Gladys Home Assistant locally using NPM on Ubuntu.
+    \item Configured it with APIs such as temperature, weather, and smart device triggers.
+    \item Explained smart home automation concepts to evaluators during the fest.
+    \item Demonstrated API integration, automation flows, and server monitoring.
+    \item Showcased the importance of open source tools in IoT and automation.
+\end{itemize}
+
+% --------------------------------------------------
+
+\subsection{Impact of Sharing My Journey}
+
+\begin{itemize}
+    \item Helped fellow students understand the practical side of open source.
+    \item Built connections with developers, maintainers, and tech communities.
+    \item Increased confidence by presenting real projects and contributions.
+    \item Inspired juniors to explore GitHub, open source, and self-hosting.
+\end{itemize}
+
+\section{Conclusion}
+
+This report marks the completion of one of the most impactful journeys of my academic life — my exploration into the world of Open Source Engineering. Throughout this course, I did far more than just install software or write commands; I learned how powerful open-source communities are, how real-world contributions are made, and how even a student like me can build and deploy meaningful systems.
+
+\bigskip
+
+From setting up my Ubuntu development environment, understanding encryption and privacy tools, and learning to navigate the Linux terminal, to hosting my own smart home assistant (Gladys) on my system — every step taught me something new about how technology truly works behind the scenes.
+
+\bigskip
+
+My open-source contributions strengthened my confidence and helped me understand how global collaboration happens. Reviewing issues, fixing documentation, improving code, and submitting pull requests taught me that open source is not just about coding — it's about communication, patience, responsibility, and continuous learning.
+
+\bigskip
+
+Through this journey, I gained:
+
+\begin{itemize}
+    \item Strong technical skills across Linux, Git, servers, and scripting
+    \item Real understanding of collaborative development workflows
+    \item Hands-on experience with version control, PR reviews, and community standards
+    \item Deep appreciation for open-source culture and transparency
+    \item Practical knowledge in hosting servers, using APIs, and automation
+    \item Confidence to contribute to global projects and share my work publicly
+\end{itemize}
+
+\bigskip
+
+Self-hosting the \textbf{Gladys Smart Home Assistant} was one of the most memorable achievements. It pushed me to explore APIs, networking, hosting, automation, and server configuration — transforming theory into a working real-world application. It helped me understand how modern IoT systems operate and how open-source solutions empower users with full control and flexibility.
+
+\bigskip
+
+Overall, this course has shaped me not just as a student, but as a developer ready to contribute, collaborate, and create. Open source has shown me that learning never stops, and every contribution — no matter how small — brings value to a global community. This journey has given me the confidence to continue exploring, experimenting, and building with an open mind and open tools.
+
+\bigskip
+
+\textbf{In conclusion, Open Source Engineering did not just teach me technology — it taught me growth.}
+
+
+\end{document}
