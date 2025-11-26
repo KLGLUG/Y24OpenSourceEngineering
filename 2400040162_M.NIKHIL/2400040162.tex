@@ -1,0 +1,413 @@
+\documentclass[12pt,a4paper]{article}
+
+% Essential packages
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\hypersetup{
+    hidelinks
+}
+
+% ==== THEME COLORS ====
+\definecolor{themeBlue}{HTML}{0047AB}
+\definecolor{lightGray}{HTML}{F5F5F5}
+
+% ==== FONT CHANGE TO MODERN SANS-SERIF ====
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{helvet}
+
+% ==== CODE BLOCK THEME ====
+\lstset{
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    frame=single,
+    numbers=left,
+    numberstyle=\tiny,
+    backgroundcolor=\color{lightGray},
+    keywordstyle=\color{themeBlue}\bfseries
+}
+
+% ==== HEADER/FOOTER THEME ====
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\textcolor{themeBlue}{Open Source Report}}
+\lhead{\textcolor{themeBlue}{Mandava Nikhil}}
+\rfoot{\textcolor{themeBlue}{Page \thepage}}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{themeBlue}\leaders\hrule height \headrulewidth\hfill}}
+
+% ==== SECTION STYLE ====
+\titleformat{\section}
+  {\Large\bfseries\color{themeBlue}}
+  {\thesection}{1em}{}
+
+\titleformat{\subsection}
+  {\large\bfseries\color{black}}
+  {\thesubsection}{1em}{}
+
+\titleformat{\subsubsection}
+  {\normalsize\bfseries\color{themeBlue}}
+  {\thesubsubsection}{1em}{}
+
+\begin{document}
+
+% ============ FRONT PAGE ============
+\begin{titlepage}
+    \centering
+    \vspace*{1cm}
+    
+    {\Huge\bfseries\color{themeBlue} Open Source Software Report\\[0.5cm] \par}
+    
+    \vspace{2cm}
+    
+    {\Large\bfseries Student Details\par}
+    \vspace{1cm}
+    
+    \begin{tabular}{ll}
+        \textbf{Name:} & MANDAVA NIKHIL \\[0.3cm]
+        \textbf{Roll Number:} & 2400040162 \\[0.3cm]
+        \textbf{Department:} & ELECTRONICS AND COMMUNICATION ENGINEERING \\[0.3cm]
+        \textbf{University:} & KL University \\[0.3cm]
+        \textbf{Course:} & Open Source \\[0.3cm]
+        \textbf{Semester:} & ODD SEMESTER\\[0.3cm]
+    \end{tabular}
+    
+    \vfill
+    
+    {\large Submitted to:\\[0.3cm]
+    \textbf{Dr. Sripath Roy}\\
+    Department of Computer Science and Engineering\\
+    KL University\par}
+    
+    \vspace{1cm}
+\end{titlepage}
+
+\newpage
+\tableofcontents
+\newpage
+
+% ================================
+% 1. LINUX DISTRO
+% ================================
+\section{Linux Distribution}
+
+\subsection{Distribution Used: Ubuntu 22.04 LTS}
+
+Ubuntu 22.04 LTS is a widely used Linux operating system that provides Long Term Support, stability, and security updates for 5 years, making it ideal for development and server hosting.
+
+\subsection{Why Ubuntu?}
+
+\begin{itemize}
+    \item \textbf{User-Friendly}: Easy to install and use
+    \item \textbf{Stable and Secure}: Long-term support
+    \item \textbf{Developer Tools}: Supports Git, Node.js, Python, GCC
+    \item \textbf{Server Ready}: Commonly used for cloud deployments
+\end{itemize}
+
+\subsection{System Specifications}
+
+\begin{itemize}
+    \item OS: Ubuntu 22.04 LTS
+    \item Kernel: Linux 5.15
+    \item Architecture: x86\_64
+    \item Shell: Bash 5.1
+\end{itemize}
+
+\newpage
+
+% ================================
+% 2. ENCRYPTION AND GPG
+% ================================
+\section{Encryption and GPG}
+
+\subsection{What is Encryption?}
+
+Encryption converts readable data into ciphertext so that only authorized users with the correct key can read it.
+
+\subsection{Types of Encryption}
+
+\subsubsection{Symmetric Encryption}
+\begin{itemize}
+    \item Same key for encryption and decryption
+    \item Fast and efficient
+    \item Examples: AES, DES
+\end{itemize}
+
+\subsubsection{Asymmetric Encryption}
+\begin{itemize}
+    \item Uses a public and private key
+    \item Commonly used for secure communication
+    \item Example: RSA
+\end{itemize}
+
+\subsection{What is GPG?}
+
+GPG (GNU Privacy Guard) is an open-source encryption tool used to:
+\begin{itemize}
+    \item Encrypt data
+    \item Decrypt messages
+    \item Digitally sign documents
+\end{itemize}
+
+\subsection{Installing GPG}
+\begin{lstlisting}[language=bash]
+sudo apt update
+sudo apt install gnupg
+\end{lstlisting}
+
+\subsection{Generating Keys}
+
+\begin{lstlisting}[language=bash]
+gpg --full-generate-key
+\end{lstlisting}
+
+\newpage
+
+% ================================
+% 3. ENCRYPTED EMAIL
+% ================================
+\section{Sending Encrypted Email}
+
+\subsection{Why Encrypt Email?}
+
+Emails can be intercepted across networks. Encryption ensures privacy, integrity, and authenticity.
+
+\subsection{Tool Used: Mozilla Thunderbird}
+
+Thunderbird supports OpenPGP encryption for secure communication.
+
+\subsection{Steps to Send Encrypted Email}
+
+\begin{enumerate}
+    \item Install Thunderbird
+    \item Add email account
+    \item Import GPG keys
+    \item Enable encryption before sending
+\end{enumerate}
+
+\newpage
+
+% ================================
+% 4. PRIVACY TOOLS
+% ================================
+\section{Privacy Tools from Prism-Break.org}
+
+\subsection{1. Signal}
+
+\begin{itemize}
+    \item End-to-end encrypted messaging
+    \item Open source and secure
+\end{itemize}
+
+\subsection{2. Tor Browser}
+
+\begin{itemize}
+    \item Anonymous browsing
+    \item Protects against tracking and surveillance
+\end{itemize}
+
+\subsection{3. Tutanota}
+
+\begin{itemize}
+    \item Encrypted email service
+    \item Open-source clients
+\end{itemize}
+
+\subsection{4. KeePassXC}
+
+\begin{itemize}
+    \item Password manager
+    \item Stores data locally in encrypted format
+\end{itemize}
+
+\subsection{5. OnionShare}
+
+\begin{itemize}
+    \item Share files anonymously over Tor
+    \item No central server required
+\end{itemize}
+
+\newpage
+
+% ================================
+% 5. OPEN SOURCE LICENSE
+% ================================
+\section{Open Source License}
+
+\subsection{License Used: MIT License}
+
+The MIT License is a permissive open-source license that allows anyone to use, copy, modify, and distribute the software as long as the original license is included.
+
+\begin{lstlisting}
+MIT License
+Copyright (c) 2025
+Permission is hereby granted...
+\end{lstlisting}
+
+\newpage
+
+% ================================
+% 6. SELF-HOSTED SERVER
+% ================================
+\section{Self-Hosted Server: PairDrop}
+
+\subsection{What is PairDrop?}
+
+PairDrop is a peer-to-peer file sharing tool that allows devices on the same network to transfer files directly using WebRTC, without internet or user accounts.
+
+\subsection{Why I Selected PairDrop}
+
+\begin{itemize}
+    \item Lightweight and fast
+    \item No signup or cloud storage
+    \item Perfect for LAN file sharing
+\end{itemize}
+
+\subsection{Installation on Ubuntu}
+
+\textbf{Step 1: Install Node.js and npm}
+\begin{lstlisting}[language=bash]
+sudo apt update
+sudo apt install nodejs npm -y
+\end{lstlisting}
+
+\textbf{Step 2: Clone Repository}
+\begin{lstlisting}[language=bash]
+git clone https://github.com/schlagmichdoch/PairDrop.git
+cd PairDrop
+\end{lstlisting}
+
+\textbf{Step 3: Install Dependencies}
+\begin{lstlisting}[language=bash]
+npm install
+\end{lstlisting}
+
+\textbf{Step 4: Start Server}
+\begin{lstlisting}[language=bash]
+npm start
+\end{lstlisting}
+
+\subsection{Accessing PairDrop}
+
+\begin{lstlisting}
+http://localhost:3000
+http://<local-ip>:3000
+\end{lstlisting}
+
+\subsection{PairDrop Web Interface}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.95\linewidth]{pairdrop_web.png}
+    \caption{PairDrop Web Interface}
+\end{figure}
+
+\subsection{Self-Hosted Demonstration at KL University}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.95\linewidth]{pairdrop_demo.jpg}
+    \caption{PairDrop Demonstration at KL University}
+\end{figure}
+
+\subsection{Localization (Telugu Translation)}
+
+To make PairDrop accessible to Telugu users, I translated key documentation sections.
+
+\subsubsection{Translated Title}
+
+\textbf{PairDrop ఫైల్ షేరింగ్ డాక్యుమెంటేషన్}
+
+\subsubsection{Translated Terms}
+
+\begin{itemize}
+    \item Installation – ఇన్‌స్టాలేషన్
+    \item Server – సర్వర్
+    \item Network – నెట్‌వర్క్
+    \item File Transfer – ఫైల్ ట్రాన్స్‌ఫర్
+\end{itemize}
+
+\subsection{Poster Overview}
+GitHub
+
+GitHub - schlagmichdoch/PairDrop: PairDrop: Transfer Files Cross-Platform. No Setup, No Signup.
+
+PairDrop: Transfer Files Cross-Platform. No Setup, No Signup. - schlagmichdoch/PairDrop
+A poster was designed to showcase:
+\begin{itemize}
+    \item What is PairDrop
+    \item How it works
+    \item Key features
+    \item Benefits of self-hosting
+\end{itemize}
+
+\newpage
+
+% ================================
+% 7. OPEN SOURCE CONTRIBUTIONS
+% ================================
+\section{Open Source Contributions (PRs)}
+
+\subsection{Repositories Contributed}
+
+\begin{enumerate}
+    \item \textbf{fineanmol/hacktoberfest} – Added quick guide
+    \item \textbf{yfosp/start-here} – Added name and profile
+    \item \textbf{zero-to-mastery/start-here-guidelines} – Contributor update
+    \item \textbf{firstcontributions/first-contributions} – Added name
+\end{enumerate}
+
+\subsection{Summary}
+
+\begin{itemize}
+    \item Total PRs: 4
+    \item Merged: 4
+    \item Open: 0
+\end{itemize}
+
+\newpage
+
+% ================================
+% 8. LINKEDIN POSTS
+% ================================
+\section{LinkedIn Posts}
+
+\subsection{Post 1: First Open Source Contribution}
+\url{https://www.linkedin.com/feed/update/urn:li:activity:7399151134055055360}
+
+\subsection{Post 2: Self-Hosting PairDrop}
+\url{https://www.linkedin.com/in/mahi-korrapati-a24773369/}
+
+\subsection{Post 3: Open Source Journey}
+\url{https://www.linkedin.com/feed/update/urn:li:activity:7399163090891587584}
+
+\newpage
+
+% ================================
+% 9. CONCLUSION
+% ================================
+\section{Conclusion}
+
+This report helped me explore:
+\begin{itemize}
+    \item Linux and command-line usage
+    \item GPG and secure communication
+    \item Privacy tools
+    \item Open-source licensing
+    \item Hosting a real application
+    \item GitHub collaboration
+\end{itemize}
+
+It strengthened my understanding of open-source culture, security, and real-world deployment.
+
+\end{document}
+Linkedin
+
+Just completed my first open-source contribution on GitHub! Really happy about this achievement. https://lnkd.in/dvz5ehvF | Mandava Nikhil
+
