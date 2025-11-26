@@ -1,0 +1,236 @@
+# **Step-by-Step Guide to Self-Host Calibre Web**
+
+We’ll use **Calibre Web** (not Calibre desktop) because it’s designed for **web hosting and self-hosting access**.
+
+---
+
+## **Step 1: Prepare Your Server / Machine**
+
+You need a machine (physical or virtual) running Linux (Ubuntu/Debian preferred).
+
+1. Make sure your system is up to date:
+
+```bash
+sudo apt update
+sudo apt upgrade -y
+```
+
+2. Install **Python 3** (Calibre Web runs on Python 3.8+):
+
+```bash
+sudo apt install python3 python3-pip -y
+```
+
+3. (Optional) Install **Git** if you want to clone the repo:
+
+```bash
+sudo apt install git -y
+```
+
+---
+
+## **Step 2: Install Calibre (Optional but Recommended)**
+
+Calibre Web can read **Calibre libraries**. Installing Calibre ensures your library is compatible.
+
+```bash
+sudo -v
+sudo wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin
+```
+
+Check the version:
+
+```bash
+calibre --version
+```
+
+---
+
+## **Step 3: Clone Calibre Web Repository**
+
+1. Choose a directory for your installation, e.g., `/opt`:
+
+```bash
+cd /opt
+sudo git clone https://github.com/janeczku/calibre-web.git
+```
+
+2. Navigate into the folder:
+
+```bash
+cd calibre-web
+```
+
+---
+
+## **Step 4: Install Python Dependencies**
+
+Calibre Web needs some Python libraries:
+
+```bash
+sudo pip3 install --upgrade pip
+sudo pip3 install -r requirements.txt
+```
+
+---
+
+## **Step 5: Create / Link Your Calibre Library**
+
+1. If you already have a Calibre library, note the **path** (e.g., `/home/user/CalibreLibrary`).
+2. If not, create a new folder:
+
+```bash
+mkdir -p ~/CalibreLibrary
+```
+
+3. Calibre Web will point to this folder on first run.
+
+---
+
+## **Step 6: Run Calibre Web**
+
+1. Start Calibre Web:
+
+```bash
+python3 cps.py
+```
+
+2. The first time it runs, it will ask for:
+
+   * **Calibre library path** → enter your path (e.g., `/home/user/CalibreLibrary`)
+   * **Admin account username/password** → set credentials for web login.
+
+3. By default, Calibre Web runs on **[http://0.0.0.0:8083](http://0.0.0.0:8083)**.
+
+4. Open a browser and go to:
+
+```
+http://<your-server-ip>:8083
+```
+
+You should see the Calibre Web interface.
+
+---
+
+## **Step 7: Set Up Calibre Web as a Service (Optional, Recommended)**
+
+To keep it running in the background and start on boot:
+
+1. Create a **systemd service file**:
+
+```bash
+sudo nano /etc/systemd/system/calibre-web.service
+```
+
+Paste:
+
+```ini
+[Unit]
+Description=Calibre Web
+After=network.target
+
+[Service]
+Type=simple
+User=<your-username>
+WorkingDirectory=/opt/calibre-web
+ExecStart=/usr/bin/python3 /opt/calibre-web/cps.py
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Replace `<your-username>` with your Linux username.
+
+2. Enable and start the service:
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable calibre-web
+sudo systemctl start calibre-web
+```
+
+3. Check status:
+
+```bash
+sudo systemctl status calibre-web
+```
+
+It should be **active (running)**.
+
+---
+
+## **Step 8: Optional – Reverse Proxy with Nginx**
+
+To access via a domain and use HTTPS:
+
+1. Install Nginx:
+
+```bash
+sudo apt install nginx -y
+```
+
+2. Create a site configuration:
+
+```bash
+sudo nano /etc/nginx/sites-available/calibre-web
+```
+
+Example config:
+
+```nginx
+server {
+    listen 80;
+    server_name yourdomain.com;
+
+    location / {
+        proxy_pass http://127.0.0.1:8083;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}
+```
+
+3. Enable site:
+
+```bash
+sudo ln -s /etc/nginx/sites-available/calibre-web /etc/nginx/sites-enabled/
+sudo nginx -t
+sudo systemctl restart nginx
+```
+
+4. Optional: Use **Certbot** for HTTPS:
+
+```bash
+sudo apt install certbot python3-certbot-nginx -y
+sudo certbot --nginx -d yourdomain.com
+```
+
+---
+
+## **Step 9: Access Your Calibre Web Interface**
+
+* Local: `http://localhost:8083`
+* LAN: `http://<server-ip>:8083`
+* Internet (if reverse proxy + domain): `https://yourdomain.com`
+
+Log in using the **admin credentials** you set during first run.
+
+---
+
+## **Step 10: Maintain Your Calibre Web**
+
+* To update:
+
+```bash
+cd /opt/calibre-web
+git pull
+sudo pip3 install -r requirements.txt
+sudo systemctl restart calibre-web
+```
+
+* Your library remains intact; only the interface is updated.
+
+---
+
+✅ **Now you have a fully self-hosted Calibre Web server**, accessible via browser anywhere you allow.
