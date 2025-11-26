@@ -1,0 +1,686 @@
+\documentclass[12pt,a4paper]{article}
+
+% Essential packages only
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\hypersetup{
+    hidelinks
+}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{enumitem}
+
+% Code listing setup
+\lstset{
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    frame=single,
+    numbers=left,
+    numberstyle=\tiny,
+    backgroundcolor=\color{gray!10}
+}
+
+% Header/Footer
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Open Source }
+\lhead{KORRAPATI MAHI VENKAT PAVAN}
+\rfoot{Page \thepage}
+\begin{figure}
+ 
+    \label{fig:placeholder}
+\end{figure}
+
+
+% Title formatting
+\titleformat{\section}{\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
+
+\begin{document}
+
+% ============ FRONT PAGE ============
+\begin{titlepage}
+    \centering
+    \vspace*{1cm}
+    
+    {\Huge\bfseries Open Source Software\\[0.5cm] \par}
+    
+    \vspace{2cm}
+    
+    {\Large\bfseries Student Details\par}
+    \vspace{1cm}
+    
+    \begin{tabular}{ll}
+        \textbf{Name:} & KORRAPATI MAHI VENKAT PAVAN \\[0.3cm]
+        \textbf{Roll Number:} & 2400040166 \\[0.3cm]
+        \textbf{Department:} & ELECTRONIC AND COMMUNICATION ENGINEERING \\[0.3cm]
+        \textbf{University:} & KL University \\[0.3cm]
+        \textbf{Course:} & Open Source Engineering  \\[0.3cm]
+        \textbf{Semester:} & ODD SEMESTER\\[0.3cm]
+    \end{tabular}
+    
+    \vfill
+    
+    {\large Submitted to:\\[0.3cm]
+    \textbf{Dr. Sripath Roy}\\
+    Department of Computer Science and Engineering\\
+    KL University\par}
+    
+    \vspace{1cm}
+\end{titlepage}
+
+\newpage
+\tableofcontents
+\newpage
+
+% ============ SECTION 1: LINUX DISTRO ============
+\section{Linux Distribution}
+
+\subsection{Distribution Used: Ubuntu 22.04 LTS}
+
+For my open-source engineering work, I selected \textbf{Ubuntu 22.04 LTS} as the primary operating system. 
+Its stability, long-term support, and wide community adoption make it an ideal choice for development, 
+testing, and deployment tasks.
+
+\subsection{Reasons for Choosing Ubuntu}
+
+Ubuntu stands out as one of the most reliable and beginner-friendly Linux distributions. 
+Some of the major advantages that influenced my choice include:
+
+\begin{itemize}
+    \item \textbf{Ease of Use:} Smooth user interface and simple navigation suitable for both beginners and advanced users.
+    \item \textbf{LTS Updates:} Long Term Support ensures continuous security updates and bug fixes for 5 years.
+    \item \textbf{Strong Community:} Large global community offering tutorials, troubleshooting help, and documentation.
+    \item \textbf{Rich Package Ecosystem:} Availability of thousands of development tools through APT.
+    \item \textbf{Stable and Reliable:} Highly suitable for software development and everyday usage.
+\end{itemize}
+
+\subsection{Important Features of Ubuntu 22.04 LTS}
+
+\begin{enumerate}
+    \item \textbf{GNOME 42 Desktop:} Clean, modern, and highly responsive.
+    \item \textbf{Linux Kernel 5.15 LTS:} Ensures better performance and hardware compatibility.
+    \item \textbf{APT Package Manager:} Efficient for installing and managing software packages.
+    \item \textbf{Default Applications:} Includes essential apps like Firefox, LibreOffice, and terminal utilities.
+    \item \textbf{Snap Integration:} Enables installation of sandboxed applications easily.
+\end{enumerate}
+
+\subsection{System Specifications}
+
+My system configuration consists of:
+
+\begin{itemize}
+\begin{figure}
+        \centering
+        \includegraphics[width=0.5\linewidth]{Screenshot 2025-11-26 131443.png}
+        \caption{UBUNTU}
+        \label{fig:placeholder}
+    \end{figure}
+        \item \textbf{Operating System:} Ubuntu 22.04 LTS
+    \item \textbf{Architecture:} x86\_64 (64-bit)
+    \item \textbf{Desktop Environment:} GNOME 42
+    \item \textbf{Shell:} Bash 5.1
+\end{itemize}
+
+\subsection{Installation Steps Followed}
+
+To set up Ubuntu successfully, I performed the following steps:
+
+\begin{enumerate}
+    \item Downloaded the official Ubuntu 22.04 LTS ISO from the Ubuntu website.
+    \item Created a bootable USB drive using Rufus/Etcher.
+    \item Configured the system for dual-boot mode without affecting existing data.
+    \item Completed the installation process and performed the initial setup.
+    \item Installed essential development packages, including Git, GCC, Python, and build tools.
+    \item Customized the environment for open-source development.
+\end{enumerate}
+
+% ============ SECTION 2: ENCRYPTION AND GPG ============
+\section{Encryption and GPG}
+
+\subsection{What is Encryption?}
+
+Encryption is the process of converting plaintext into ciphertext to protect data confidentiality. It ensures that only authorized parties can access the information.
+
+\subsection{Types of Encryption}
+
+\subsubsection{Symmetric Encryption}
+Uses the same key for encryption and decryption. Examples: AES, DES.
+
+\subsubsection{Asymmetric Encryption}
+Uses a public-private key pair. Examples: RSA, ECC.
+
+\subsection{GNU Privacy Guard (GPG)}
+
+GPG is a free implementation of the OpenPGP standard for encrypting and signing data.
+
+\subsection{Installing GPG}
+
+\begin{lstlisting}[language=bash]
+sudo apt update
+sudo apt install gnupg
+gpg --version
+\end{lstlisting}
+
+\subsection{Generating GPG Keys}
+
+\begin{lstlisting}[language=bash]
+gpg --full-generate-key
+\end{lstlisting}
+
+Steps followed:
+\begin{enumerate}
+    \item Selected RSA and RSA (default)
+    \item Key size: 4096 bits
+    \item Key validity: 1 year
+    \item Entered name and email
+    \item Created strong passphrase
+\end{enumerate}
+
+\subsection{Listing Keys}
+
+\begin{lstlisting}[language=bash]
+gpg --list-keys
+gpg --list-secret-keys
+\end{lstlisting}
+
+\subsection{Exporting Public Key}
+
+\begin{lstlisting}[language=bash]
+gpg --armor --export your-email@example.com > public-key.asc
+\end{lstlisting}
+
+\subsection{Encrypting Files}
+
+\begin{lstlisting}[language=bash]
+gpg --encrypt --recipient your-email@example.com document.txt
+\end{lstlisting}
+
+\subsection{Decrypting Files}
+
+\begin{lstlisting}[language=bash]
+gpg --decrypt document.txt.gpg > document.txt
+\end{lstlisting}
+
+% ============ SECTION 3: ENCRYPTED EMAIL ============
+\section{Sending Encrypted Email}
+
+\subsection{Email Encryption Overview}
+
+Email encryption protects the content of emails from unauthorized access during transmission and storage.
+
+\subsection{Tools Used}
+
+\begin{itemize}
+    \item \textbf{Thunderbird:} Email client with built-in OpenPGP support
+    \item \textbf{GPG Keys:} For encryption and signing
+    \item \textbf{Protonmail:} Alternative end-to-end encrypted email service
+\end{itemize}
+
+\subsection{Setting up Thunderbird with GPG}
+
+\subsubsection{Installation}
+
+\begin{lstlisting}[language=bash]
+sudo apt install thunderbird
+\end{lstlisting}
+
+\subsubsection{Configuring OpenPGP}
+
+Steps followed:
+\begin{enumerate}
+    \item Open Thunderbird
+    \item Go to Account Settings
+    \item Select End-to-End Encryption
+    \item Add existing GPG key or generate new one
+    \item Import recipient's public key
+\end{enumerate}
+
+\subsection{Sending Encrypted Email}
+
+Process:
+\begin{enumerate}
+    \item Compose new email
+    \item Click on Security button
+    \item Select "Require Encryption"
+    \item Optionally add digital signature
+    \item Send email
+\end{enumerate}
+
+\subsection{Receiving Encrypted Email}
+
+When receiving:
+\begin{enumerate}
+    \item Email appears encrypted
+    \item Thunderbird automatically detects encryption
+    \item Enter GPG passphrase
+    \item Email content is decrypted and displayed
+\end{enumerate}
+
+\subsection{Best Practices}
+
+\begin{itemize}
+    \item Never share your private key
+    \item Use strong passphrases
+    \item Keep your GPG keys backed up securely
+    \item Regularly update keys
+    \item Verify recipient's public key fingerprint
+\end{itemize}
+
+% ============ SECTION 4: PRIVACY TOOLS ============
+\section{Privacy Tools from prism-break.org}
+
+\subsection{Overview of PRISM-Break}
+
+\textbf{PRISM-Break} is an online platform that provides recommendations for privacy-focused and open source alternatives to mainstream software. The website encourages users to move away from applications that may engage in data collection, surveillance, or tracking, and instead adopt tools that prioritize user freedom and digital privacy.
+
+\subsection{Tool 1: Signal -- Secure Messaging Application}
+
+\textbf{Description:}  
+Signal is a highly trusted, open source messaging platform that offers end-to-end encryption for text messages, voice calls, and video communication.
+
+\textbf{Key Advantages:}
+\begin{itemize}
+    \item All communication is protected with end-to-end encryption.
+    \item Open source and publicly audited, ensuring transparency.
+    \item No advertisements, trackers, or user profiling.
+    \item Minimal metadata retention policies.
+    \item Features such as disappearing messages enhance privacy.
+\end{itemize}
+
+\textbf{Why It Matters:}  
+Signal protects users from mass surveillance and unauthorized data access by ensuring that only the sender and receiver can read the messages.
+
+\subsection{Tool 2: Mozilla Firefox -- Privacy-Focused Web Browser}
+
+\textbf{Description:}  
+Firefox is a fully open source browser known for its strong privacy protections, customizable interface, and large extension ecosystem.
+
+\textbf{Privacy Features:}
+\begin{itemize}
+    \item Enhanced Tracking Protection against cookies, fingerprinting, and scripts.
+    \item DNS-over-HTTPS (DoH) for secure domain lookups.
+    \item Telemetry disabled by default in many builds.
+    \item Support for privacy extensions like uBlock Origin and Privacy Badger.
+\end{itemize}
+
+\textbf{Recommended Settings:}
+\begin{itemize}
+    \item Enable “Strict” Tracking Protection.
+    \item Use HTTPS-Only Mode.
+    \item Disable all telemetry data collection.
+    \item Install privacy extensions for improved security.
+\end{itemize}
+
+\subsection{Tool 3: ProtonMail -- Encrypted Email Service}
+
+\textbf{Description:}  
+ProtonMail is a privacy-respecting email provider offering end-to-end encrypted email based in Switzerland, a country known for strong privacy regulations.
+
+\textbf{Notable Features:}
+\begin{itemize}
+    \item End-to-end and zero-access encryption.
+    \item No phone number or personal details required to sign up.
+    \item Protected under Swiss data protection laws.
+    \item Open source applications for web and mobile.
+\end{itemize}
+
+\textbf{Ideal For:}
+\begin{itemize}
+    \item Private personal communication.
+    \item Journalists, activists, and professionals handling sensitive data.
+    \item Business emails requiring confidentiality.
+\end{itemize}
+
+\subsection{Tool 4: Tor Browser -- Anonymous Internet Browsing}
+
+\textbf{Description:}  
+Tor Browser enables anonymous browsing by routing traffic through a network of decentralized volunteer-operated relays.
+
+\textbf{How It Protects Users:}
+\begin{itemize}
+    \item Multi-layer encryption (“onion routing”).
+    \item Completely hides IP address and location.
+    \item Prevents tracking by advertisers and network observers.
+    \item Helps bypass censorship and geo-restrictions.
+\end{itemize}
+
+\textbf{Common Use Cases:}
+\begin{itemize}
+    \item Accessing restricted information securely.
+    \item Conducting anonymous research.
+    \item Whistleblowing and sensitive reporting.
+    \item Avoiding surveillance and profiling.
+\end{itemize}
+
+\subsection{Tool 5: VeraCrypt -- Advanced Disk Encryption}
+
+\textbf{Description:}  
+VeraCrypt is a powerful open source encryption utility designed to secure files, folders, and entire drives through strong cryptographic algorithms.
+
+\textbf{Key Features:}
+\begin{itemize}
+    \item Full disk and partition encryption.
+    \item Support for hidden volumes and plausible deniability.
+    \item Cross-platform compatibility (Windows, Linux, macOS).
+    \item Strong encryption standards such as AES, Serpent, and Twofish.
+\end{itemize}
+
+\textbf{Best Uses:}
+\begin{itemize}
+    \item Safeguarding confidential files on laptops and PCs.
+    \item Encrypting external drives and portable storage devices.
+    \item Protecting sensitive project data and system partitions.
+\end{itemize}
+
+
+% ============ SECTION 5: OPEN SOURCE LICENSE ============
+\section{Open Source License}
+
+\subsection{License Used: MIT License}
+
+For my open source contributions and projects, I primarily work with the \textbf{MIT License}.
+
+\subsection{What is the MIT License?}
+
+The MIT License is a permissive free software license that allows users to:
+\begin{itemize}
+    \item Use the software commercially
+    \item Modify the software
+    \item Distribute the software
+    \item Use the software privately
+    \item Sublicense the software
+\end{itemize}
+
+\subsection{MIT License Text}
+
+\begin{lstlisting}
+MIT License
+
+Copyright (c) 2025 Duvvu Venkata Ramana
+
+Permission is hereby granted, free of charge, to any person 
+obtaining a copy of this software and associated documentation 
+files (the "Software"), to deal in the Software without 
+restriction, including without limitation the rights to use, 
+copy, modify, merge, publish, distribute, sublicense, and/or 
+sell copies of the Software, and to permit persons to whom the 
+Software is furnished to do so, subject to the following 
+conditions:
+
+The above copyright notice and this permission notice shall be 
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND...
+\end{lstlisting}
+
+\subsection{Why Choose MIT License?}
+
+\begin{enumerate}
+    \item \textbf{Simple and Easy:} Short and easy to understand
+    \item \textbf{Permissive:} Minimal restrictions on reuse
+    \item \textbf{Business-Friendly:} Can be used in proprietary software
+    \item \textbf{Popular:} Widely used and recognized
+    \item \textbf{Compatible:} Works well with other licenses
+\end{enumerate}
+
+\subsection{Other Common Open Source Licenses}
+
+\subsubsection{GPL (GNU General Public License)}
+\begin{itemize}
+    \item Copyleft license
+    \item Requires derivative works to be open source
+    \item Used by Linux kernel
+\end{itemize}
+
+\subsubsection{Apache License 2.0}
+\begin{itemize}
+    \item Permissive like MIT
+    \item Includes patent grant
+    \item Used by Apache projects
+\end{itemize}
+
+\subsubsection{BSD License}
+\begin{itemize}
+    \item Very permissive
+    \item Similar to MIT
+    \item Used by FreeBSD
+\end{itemize}
+
+% ============ SECTION 6: SELF-HOSTED SERVER ============
+\section{Self-Hosted Server: PairDrop}
+
+\subsection{What is PairDrop?}
+
+PairDrop is an open-source, browser-based peer-to-peer (P2P) file sharing application that lets devices on the same local network — or, optionally, over the internet — transfer files directly, without relying on third-party cloud servers. :contentReference[oaicite:2]{index=2}  
+
+Unlike many conventional file-sharing services, PairDrop requires no installation or account creation: just open a modern web browser, and it runs on Windows, Linux, macOS, Android, or iOS. :contentReference[oaicite:3]{index=3}  
+
+\subsection{Why Self-Host PairDrop?}
+
+\begin{itemize}
+    \item \textbf{Privacy and Data Control:} Since files are transferred directly between devices, and not uploaded to third-party servers, you retain full control over your data. :contentReference[oaicite:4]{index=4}
+    \item \textbf{Cross-Platform Compatibility:} Works across operating systems and devices via the browser. :contentReference[oaicite:5]{index=5}
+    \item \textbf{Simplicity and No Setup for End-Users:} Recipients do not need to install any software — they just open the browser. :contentReference[oaicite:6]{index=6}
+    \item \textbf{Flexibility:} Because PairDrop is open-source (GPL-3.0), you can self-host it — giving you independence from public instances. :contentReference[oaicite:7]{index=7}
+\end{itemize}
+
+\subsection{Self-Hosting Instructions (Basic Setup)}
+
+Below is a simplified guide to self-host PairDrop on a server of your choice (e.g., a VPS or a local machine):
+
+\begin{enumerate}
+    \item Clone the PairDrop repository:
+    \begin{lstlisting}[language=bash]
+git clone https://github.com/schlagmichdoch/PairDrop.git
+cd PairDrop
+    \end{lstlisting}
+    \item Install dependencies using Node.js / npm:
+    \begin{lstlisting}[language=bash]
+npm install
+npm run build     # or as per repo instructions
+    \end{lstlisting}
+    \item Optionally set up a reverse proxy (e.g. Nginx) and SSL/TLS (e.g. Let’s Encrypt) to serve over HTTPS — especially if you want to access it over the internet or avoid browser warnings.  
+    \item If behind NAT or for remote connections: configure a TURN/STUN server (or use the default configuration) so peers can connect. :contentReference[oaicite:8]{index=8}  
+    \item Start the server (e.g. `npm start` or via Docker — as suggested in the PairDrop documentation). Once running, open the server’s URL in a browser; devices on the same network (or paired via internet) will see each other and you can start transferring files. :contentReference[oaicite:9]{index=9}  
+\end{enumerate}
+
+\subsection{Use Cases}
+
+PairDrop self-hosting is especially useful when:
+
+\begin{itemize}
+    \item You want private file sharing within local network (home / office), without uploading to public servers.  
+    \item You need cross-OS file transfer (e.g. from Android phone to Linux laptop, or Windows PC to iOS device).  
+    \item You want full control of the service (no tracking, no ads).  
+    \item You want a lightweight alternative to bulky cloud drives, for occasional file transfers among trusted devices.  
+\end{itemize}
+
+\subsection{Security & Privacy Considerations}
+
+\begin{itemize}
+    \item PairDrop uses WebRTC for peer-to-peer transfers. Once the connection is established, file data flows directly between devices, not through third-party servers — which reduces risk of leak. :contentReference[oaicite:10]{index=10}  
+    \item If you expose the server to the internet (for remote access), it is strongly recommended to secure it via HTTPS and, optionally, restrict access (firewall, VPN, or password protection) to trusted users.  
+    \item Always ensure you trust the devices you’re pairing with — as with any P2P tool, sending files blindly may pose risk if the other device is compromised.  
+\end{itemize}
+
+\section{My Open Source Contributions}
+
+Over the past few weeks, I have actively contributed to multiple open-source repositories. 
+These contributions helped me understand collaboration, code review practices, 
+and the open-source workflow. Below is a structured list of my merged pull requests, 
+presented in the style of my LinkedIn post.
+
+\subsection*{Merged Pull Requests}
+
+\begin{itemize}
+    \item \textbf{fineanmol/hacktoberfest} \\
+    \textit{Title:} contributed my branch1 \\
+    \textit{Status:} Successfully merged \\
+    \textit{Timeline:} Merged 4 days ago
+
+    \item \textbf{yfosp/start-here} \\
+    \textit{Title:} Add my GitHub username to CONTRIBUTORS.md \\
+    \textit{Status:} Successfully merged, Earned ``First Open Source Contribution Badge'' \\
+    \textit{Timeline:} Merged 3 days ago
+
+    \item \textbf{zero-to-mastery/start-here-guidelines} \\
+    \textit{Title:} Add my branch number 3 \\
+    \textit{Status:} Approved and merged \\
+    \textit{Timeline:} Merged last week
+
+    \item \textbf{firstcontributions/first-contributions} \\
+    \textit{Title:} added name and profile \\
+    \textit{Status:} Successfully merged \\
+    \textit{Timeline:} Merged 3 weeks ago
+\end{itemize}
+
+\subsection*{Reflection}
+
+These contributions strengthened my understanding of collaborative development,
+documentation improvement, and beginner-friendly open-source workflows. 
+I am excited to continue contributing and learning through real-world community projects.
+
+
+
+
+
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|c|}
+\hline
+\textbf{Metric} & \textbf{Count} \\
+\hline
+Total Pull Requests & 21 \\
+\hline
+Merged PRs & 4 \\
+\hline
+Open PRs & 13 \\
+\hline
+\end{tabular}
+\caption{Open Source Contribution Statistics}
+\end{table}
+
+\subsection{Key Learnings from Contributions}
+
+\begin{enumerate}
+    \item \textbf{Git Workflow:} Mastered branching, committing, and pull request processes
+    \item \textbf{Code Review:} Learned to receive and implement feedback constructively
+    \item \textbf{Documentation:} Understood the importance of clear, comprehensive documentation
+    \item \textbf{Collaboration:} Experienced working with global developer communities
+    \item \textbf{Testing:} Learned to write comprehensive test suites
+    \item \textbf{Localization:} Appreciated the value of making software accessible in regional languages
+\end{enumerate}
+
+% ============ SECTION 8: LINKEDIN POSTS ============
+\subsection{Post 1: My Open Source Blog – Journey, Challenges, and Growth}
+
+\textbf{Link:} 
+\url{https://www.linkedin.com/feed/update/urn:li:activity:7398222448963465216/}
+
+\textbf{Summary:} 
+Shared a detailed blog post covering my complete journey into open source, 
+including the initial challenges, learning phases, mindset shift, and 
+the confidence gained through hands-on contributions.
+
+\textbf{Key Points:}
+\begin{itemize}
+    \item Documenting my beginner-friendly learning path
+    \item Challenges faced during initial contributions
+    \item Importance of consistency in open source
+    \item Growth in Git, GitHub, Linux, and collaboration skills
+\end{itemize}
+
+
+\subsection{Post 2: My First Open Source Contribution on GitHub}
+
+\textbf{Link:} 
+\url{https://www.linkedin.com/feed/update/urn:li:activity:7398209468167221248/}
+
+\textbf{Summary:} 
+Shared the excitement of successfully making my first open source contribution. 
+Highlighted how this milestone boosted my confidence and motivated me to continue 
+exploring and contributing to the community.
+
+\textbf{Highlights:}
+\begin{itemize}
+    \item First PR successfully merged
+    \item Learning how to contribute to beginner-friendly repositories
+    \item Understanding how issues, forks, and branches work
+    \item Receiving support from the open source community
+\end{itemize}
+
+
+\subsection{Post 3: Self-Hosting a PairDrop Server}
+
+\textbf{Link:} 
+\url{https://www.linkedin.com/feed/update/urn:li:activity:7398228622836293632/}
+
+\textbf{Summary:} 
+Shared my experience hosting a self-hosted PairDrop server, a fast and secure 
+local file-sharing solution. Explained the setup process, benefits of self-hosting, 
+and why it is an essential privacy-friendly tool.
+
+\textbf{Key Points:}
+\begin{itemize}
+    \item Introduction to PairDrop and local file sharing
+    \item Setting up a private self-hosted server
+    \item Understanding security and privacy advantages
+    \item Deploying tools in a Linux-based environment
+\end{itemize}
+
+
+\section{Conclusion}
+
+This report summarizes my complete journey into Open Source Engineering, highlighting my learning experience with Linux, Git, GitHub, privacy tools, self-hosted servers, and meaningful project contributions. Along the way, I also shared my progress through multiple LinkedIn posts to inspire others and document my growth.
+
+\subsection*{Key Achievements}
+\begin{itemize}
+    \item Successfully set up and worked with Ubuntu Linux as my primary development environment
+    \item Explored encryption, GPG keys, and essential privacy tools
+    \item Self-hosted a \textbf{PairDrop server} for secure local file sharing
+    \item Made multiple open source contributions across beginner-friendly repositories
+    \item Published professional updates and reflections on LinkedIn
+\end{itemize}
+
+\subsection*{Skills Gained}
+\begin{enumerate}
+    \item Technical skills in Linux, Git, GitHub, and open source workflows
+    \item Understanding of collaborative development and pull request practices
+    \item Experience with documentation, testing, and community-driven development
+    \item Practical abilities in server administration and deployment
+    \item Improved communication and professional networking through social platforms
+\end{enumerate}
+
+\subsection*{Self-Hosting PairDrop}
+The experience of self-hosting \textbf{PairDrop} has been particularly valuable, allowing me to gain hands-on experience with:
+\begin{itemize}
+    \item Local server configuration and setup
+    \item Web-based file transfer systems
+    \item Understanding security and privacy-focused architectures
+    \item Managing and running services on a Linux environment
+\end{itemize}
+
+\subsection*{LinkedIn Documentation}
+Throughout my journey, I actively documented my progress on LinkedIn:
+
+\begin{itemize}
+    \item \textbf{My Open Source Journey Blog Post:}  
+    \url{https://www.linkedin.com/feed/update/urn:li:activity:7398222448963465216/}
+
+    \item \textbf{My First Open Source Contribution Post:}  
+    \url{https://www.linkedin.com/feed/update/urn:li:activity:7398209468167221248/}
+
+    \item \textbf{Self-Hosted PairDrop Server Post:}  
+    \url{https://www.linkedin.com/feed/update/urn:li:activity:7398228622836293632/}
+\end{itemize}
+
+\subsection*{Final Reflection}
+Overall, my open source journey has been an eye-opening experience. It has connected me with a global community of developers, improved my technical abilities, strengthened my confidence, and motivated me to continue contributing. Open source has taught me the value of collaboration, transparency, and building software that empowers everyone.
+
+\end{document}
